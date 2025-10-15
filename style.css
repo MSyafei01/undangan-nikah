@@ -1,4 +1,12 @@
-    /* style.css - Modern, Elegant, with Smooth Transitions */
+    body {
+    /* ... properti lama ... */
+    background-image:
+        url("https://www.transparenttextures.com/patterns/old-paper.png"),
+        linear-gradient(135deg, var(--bg-primary), var(--accent-soft-gold));
+    background-size: auto, 300%;
+    background-blend-mode: overlay, normal;
+    background-attachment: fixed;
+    }
 
     :root {
     /* Light Theme */
@@ -10,6 +18,7 @@
     --card-bg: rgba(255, 255, 255, 0.88);
     --shadow-light: 0 6px 20px rgba(10, 46, 92, 0.12);
     --shadow-hover: 0 12px 30px rgba(10, 46, 92, 0.2);
+    --card-bg: rgba(255, 255, 255, 0.92); 
     }
 
     .theme-dark {
@@ -18,6 +27,7 @@
     --card-bg: rgba(18, 28, 45, 0.88);
     --shadow-light: 0 6px 20px rgba(0, 0, 0, 0.3);
     --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.4);
+    --card-bg: rgba(20, 30, 50, 0.92);
     }
 
     * {
@@ -416,4 +426,90 @@
     .timeline::before { left: 6px; }
     .timeline-icon { left: -24px; width: 30px; height: 30px; }
     .gallery-container { height: 320px; }
+    }
+
+        /* === RSVP Section === */
+    .rsvp-card {
+    background: var(--card-bg);
+    padding: 32px;
+    border-radius: 18px;
+    box-shadow: var(--shadow-light);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .rsvp-card p {
+    margin-bottom: 24px;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    }
+
+    .form-group {
+    margin-bottom: 18px;
+    text-align: left;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    }
+
+    .theme-dark .form-group input,
+    .theme-dark .form-group select,
+    .theme-dark .form-group textarea {
+    background: rgba(30, 40, 60, 0.7);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: white;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+
+    .form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+    }
+
+    .rsvp-status {
+    margin-top: 16px;
+    font-weight: 600;
+    min-height: 24px;
+    }
+
+    .rsvp-status.success {
+    color: #28a745;
+    }
+
+    .rsvp-status.error {
+    color: #dc3545;
+    }
+
+    /* === Gold Overlay for Elegance === */
+    body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
     }
