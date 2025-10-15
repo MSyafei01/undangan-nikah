@@ -65,3 +65,35 @@
     }
     isMuted = !isMuted;
     });
+
+    // === Galeri Foto Otomatis ===
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const totalSlides = slides.length;
+
+    function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+    currentSlide = index;
+    }
+
+    function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    showSlide(currentSlide);
+    }
+
+    // Auto slide setiap 4 detik
+    let slideInterval = setInterval(nextSlide, 4000);
+
+    // Klik dot
+    dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+        clearInterval(slideInterval); // hentikan auto jika manual
+        showSlide(parseInt(dot.dataset.index));
+        slideInterval = setInterval(nextSlide, 4000); // mulai lagi
+    });
+    });
