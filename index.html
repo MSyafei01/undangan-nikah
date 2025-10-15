@@ -1,0 +1,55 @@
+    <!DOCTYPE html>
+    <html lang="id">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Undangan Pernikahan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="theme-light">
+
+    <!-- Toggle Mode -->
+    <div class="theme-toggle" id="themeToggle">
+        <span>🌙</span>
+    </div>
+
+    <!-- Halaman Pembuka (Splash) -->
+    <section id="cover" class="cover">
+        <div class="cover-content">
+        <h1 class="bride-groom">
+            Khoirul Kurniawan Bimantara<br>&<br>Putri Nailil Qurani
+        </h1>
+        <p class="wedding-date">20 November 2025</p>
+        
+        <div id="countdown" class="countdown">
+            <div><span id="days">00</span> Hari</div>
+            <div><span id="hours">00</span> Jam</div>
+            <div><span id="minutes">00</span> Menit</div>
+            <div><span id="seconds">00</span> Detik</div>
+        </div>
+
+        <button id="openInvitation" class="btn">Buka Undangan</button>
+
+        <!-- Musik Latar (YouTube Embed Tersembunyi) -->
+        <div class="music-control" id="musicControl">
+            <span id="musicIcon">🔈</span>
+        </div>
+
+        <div style="display:none;">
+            <iframe id="ytPlayer" src="https://www.youtube.com/embed/JmIUdR_fob0?autoplay=1&loop=1&playlist=JmIUdR_fob0&controls=0&mute=1" 
+                    allow="autoplay"></iframe>
+        </div>
+        </div>
+    </section>
+
+    <!-- Main Content (Sembunyi dulu) -->
+    <main id="mainContent" class="hidden">
+        <!-- Nanti: Love Story, Acara, Galeri -->
+    </main>
+
+    <script src="script.js"></script>
+    </body>
+    </html>
