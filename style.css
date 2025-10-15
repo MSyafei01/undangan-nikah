@@ -1,0 +1,127 @@
+    /* style.css */
+    :root {
+    /* Light Theme */
+    --bg-primary: #fdfdfd;
+    --text-primary: #0a2e5c;
+    --accent-gold: #d4af37;
+    --accent-soft-gold: #f0d9b5;
+    --accent-blue: #2a5c82;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --shadow: 0 4px 20px rgba(10, 46, 92, 0.1);
+    }
+
+    .theme-dark {
+    --bg-primary: #0a1220;
+    --text-primary: #f0f0f0;
+    --card-bg: rgba(15, 25, 40, 0.85);
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.5s ease, color 0.5s ease;
+    overflow-x: hidden;
+    }
+
+    /* Toggle Mode */
+    .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 100;
+    }
+
+    /* Cover Page */
+    .cover {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--bg-primary), var(--accent-soft-gold));
+    padding: 20px;
+    }
+
+    .bride-groom {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .wedding-date {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: var(--accent-blue);
+    }
+
+    .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    }
+
+    .countdown > div {
+    background: var(--card-bg);
+    padding: 12px 10px;
+    border-radius: 8px;
+    min-width: 80px;
+    box-shadow: var(--shadow);
+    }
+
+    .countdown span {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    display: block;
+    }
+
+    .btn {
+    background: var(--accent-gold);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    }
+
+    .btn:hover {
+    background: #b89b2f;
+    transform: translateY(-2px);
+    }
+
+    .music-control {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    }
+
+    .hidden {
+    display: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+    .bride-groom { font-size: 2rem; }
+    .wedding-date { font-size: 1.2rem; }
+    .countdown > div { min-width: 60px; padding: 10px 5px; }
+    .countdown span { font-size: 1.3rem; }
+    }
