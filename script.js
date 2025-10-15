@@ -1,13 +1,11 @@
-    // script.js
+    // script.js - Enhanced with Elegant Transitions & Music Control
 
-    // === 1. Toggle Mode Malam/Siang ===
+    // === Theme Toggle ===
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
 
-    // Cek preferensi sebelumnya
     const savedTheme = localStorage.getItem('theme') || 'light';
     body.classList.toggle('theme-dark', savedTheme === 'dark');
-
     themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
 
     themeToggle.addEventListener('click', () => {
@@ -17,7 +15,7 @@
     themeToggle.textContent = isDark ? '☀️' : '🌙';
     });
 
-    // === 2. Countdown Timer ===
+    // === Countdown Timer ===
     const weddingDate = new Date('2025-11-20T00:00:00').getTime();
 
     function updateCountdown() {
@@ -25,7 +23,7 @@
     const diff = weddingDate - now;
 
     if (diff <= 0) {
-        document.getElementById('countdown').innerHTML = '<p>🎉 Hari Bahagia Telah Tiba!</p>';
+        document.getElementById('countdown').innerHTML = '<p style="font-size:1.4rem;color:var(--accent-gold);">🎉 Hari Bahagia Telah Tiba!</p>';
         return;
     }
 
@@ -43,38 +41,78 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // === 3. Buka Undangan ===
+    // === YouTube Player Control ===
+    let playerReady = false;
+    let userHasInteracted = false;
+
+    // === Buka Undangan + Main Musik ===
     document.getElementById('openInvitation').addEventListener('click', () => {
-    document.getElementById('cover').classList.add('hidden');
-    document.getElementById('mainContent').classList.remove('hidden');
+    userHasInteracted = true;
+
+    // Fade out cover
+    const cover = document.getElementById('cover');
+    cover.style.opacity = '0';
+    cover.style.transform = 'scale(0.97)';
+    
+    setTimeout(() => {
+        cover.classList.add('hidden');
+        const mainContent = document.getElementById('mainContent');
+        mainContent.classList.remove('hidden');
+        
+        // Coba mainkan musik
+        playMusic();
+        
+        // Refresh AOS setelah konten muncul
+        if (typeof AOS !== 'undefined') AOS.refresh();
+    }, 600);
     });
 
-    // === 4. Musik Latar (Toggle Play/Pause) ===
-    const player = document.getElementById('ytPlayer');
+    // === Musik Latar ===
     const musicIcon = document.getElementById('musicIcon');
-    let isMuted = true;
+    let isPlaying = false;
 
-    document.getElementById('musicControl').addEventListener('click', () => {
-    if (isMuted) {
-        player.src += "&mute=0"; // Tidak bisa unmute via JS karena kebijakan browser
-        musicIcon.textContent = '🔊';
-        alert('Musik diputar! (Pastikan suara tidak dimatikan di perangkat Anda)');
-    } else {
-        player.src = player.src.replace("&mute=0", "&mute=1");
-        musicIcon.textContent = '🔈';
+    function playMusic() {
+    const player = document.getElementById('ytPlayer');
+    if (!player) return;
+
+    // Ganti src ke versi unmuted (harus setelah interaksi user)
+    player.src = "https://www.youtube.com/embed/JmIUdR_fob0?autoplay=1&loop=1&playlist=JmIUdR_fob0&controls=0&mute=0";
+    isPlaying = true;
+    musicIcon.textContent = '🔊';
     }
-    isMuted = !isMuted;
+
+    function pauseMusic() {
+    const player = document.getElementById('ytPlayer');
+    if (player) {
+        player.src = "about:blank"; // Hentikan sementara
+    }
+    isPlaying = false;
+    musicIcon.textContent = '🔈';
+    }
+
+    // Toggle musik manual
+    document.getElementById('musicControl').addEventListener('click', () => {
+    if (!userHasInteracted) {
+        alert('Silakan buka undangan terlebih dahulu untuk mengaktifkan musik.');
+        return;
+    }
+
+    if (isPlaying) {
+        pauseMusic();
+    } else {
+        playMusic();
+    }
     });
 
-    // === Galeri Foto Otomatis ===
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-const totalSlides = slides.length;
+    // === Galeri Otomatis ===
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
 
     function showSlide(index) {
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
     
     slides[index].classList.add('active');
     dots[index].classList.add('active');
@@ -86,14 +124,12 @@ const totalSlides = slides.length;
     showSlide(currentSlide);
     }
 
-    // Auto slide setiap 4 detik
-    let slideInterval = setInterval(nextSlide, 4000);
+    let slideInterval = setInterval(nextSlide, 4500);
 
-    // Klik dot
     dots.forEach(dot => {
     dot.addEventListener('click', () => {
-        clearInterval(slideInterval); // hentikan auto jika manual
+        clearInterval(slideInterval);
         showSlide(parseInt(dot.dataset.index));
-        slideInterval = setInterval(nextSlide, 4000); // mulai lagi
+        slideInterval = setInterval(nextSlide, 4500);
     });
     });

@@ -1,4 +1,5 @@
-    /* style.css */
+    /* style.css - Modern, Elegant, with Smooth Transitions */
+
     :root {
     /* Light Theme */
     --bg-primary: #fdfdfd;
@@ -6,15 +7,17 @@
     --accent-gold: #d4af37;
     --accent-soft-gold: #f0d9b5;
     --accent-blue: #2a5c82;
-    --card-bg: rgba(255, 255, 255, 0.85);
-    --shadow: 0 4px 20px rgba(10, 46, 92, 0.1);
+    --card-bg: rgba(255, 255, 255, 0.88);
+    --shadow-light: 0 6px 20px rgba(10, 46, 92, 0.12);
+    --shadow-hover: 0 12px 30px rgba(10, 46, 92, 0.2);
     }
 
     .theme-dark {
     --bg-primary: #0a1220;
-    --text-primary: #f0f0f0;
-    --card-bg: rgba(15, 25, 40, 0.85);
-    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --text-primary: #f8f8f8;
+    --card-bg: rgba(18, 28, 45, 0.88);
+    --shadow-light: 0 6px 20px rgba(0, 0, 0, 0.3);
+    --shadow-hover: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
     * {
@@ -27,100 +30,162 @@
     font-family: 'Poppins', sans-serif;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    transition: background-color 0.5s ease, color 0.5s ease;
+    transition: background-color 0.6s ease, color 0.6s ease;
     overflow-x: hidden;
+    line-height: 1.6;
     }
 
-    /* Toggle Mode */
+    /* === Toggle Mode === */
     .theme-toggle {
     position: fixed;
-    top: 20px;
-    right: 20px;
-    font-size: 1.5rem;
+    top: 24px;
+    right: 24px;
+    font-size: 1.4rem;
     cursor: pointer;
-    z-index: 100;
+    z-index: 1000;
+    background: var(--card-bg);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease;
     }
 
-    /* Cover Page */
+    .theme-toggle:hover {
+    transform: rotate(20deg) scale(1.1);
+    }
+
+    /* === Cover Page === */
     .cover {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(135deg, var(--bg-primary), var(--accent-soft-gold));
+    background: linear-gradient(135deg, #f9f7f0 0%, var(--accent-soft-gold) 100%);
     padding: 20px;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .cover.hidden {
+    opacity: 0;
+    transform: scale(0.97);
+    pointer-events: none;
     }
 
     .bride-groom {
     font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
+    font-size: 3rem;
     color: var(--accent-gold);
-    margin-bottom: 1.5rem;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-bottom: 1.4rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    line-height: 1.2;
+    animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
     }
 
     .wedding-date {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin-bottom: 2rem;
     color: var(--accent-blue);
+    font-weight: 500;
     }
 
     .countdown {
     display: flex;
     justify-content: center;
-    gap: 15px;
-    margin-bottom: 2rem;
-    font-weight: 500;
+    gap: 14px;
+    margin-bottom: 2.2rem;
+    flex-wrap: wrap;
     }
 
     .countdown > div {
     background: var(--card-bg);
-    padding: 12px 10px;
-    border-radius: 8px;
-    min-width: 80px;
-    box-shadow: var(--shadow);
+    padding: 14px 8px;
+    border-radius: 12px;
+    min-width: 76px;
+    box-shadow: var(--shadow-light);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
     }
 
     .countdown span {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     font-weight: 700;
     color: var(--accent-gold);
     display: block;
+    font-family: 'Playfair Display', serif;
     }
 
     .btn {
-    background: var(--accent-gold);
+    background: linear-gradient(135deg, var(--accent-gold), #b89b2f);
     color: white;
     border: none;
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    border-radius: 30px;
+    padding: 14px 36px;
+    font-size: 1.15rem;
+    border-radius: 50px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 500;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    box-shadow: var(--shadow-light);
     }
 
     .btn:hover {
-    background: #b89b2f;
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: var(--shadow-hover);
     }
 
     .music-control {
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 1.3rem;
+    bottom: 24px;
+    right: 24px;
+    font-size: 1.4rem;
     cursor: pointer;
+    z-index: 10;
+    background: var(--card-bg);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-light);
+    transition: all 0.3s ease;
     }
 
-    .hidden {
-    display: none;
+    .music-control:hover {
+    transform: scale(1.1);
+    color: var(--accent-gold);
     }
 
-        /* Section Umum */
+    /* === Main Content === */
+    #mainContent {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    }
+
+    #mainContent:not(.hidden) {
+    opacity: 1;
+    }
+
     .section {
-    padding: 60px 20px;
+    padding: 80px 20px;
     background-color: var(--bg-primary);
     }
 
@@ -132,130 +197,158 @@
     .section-title {
     text-align: center;
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: var(--accent-gold);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     position: relative;
     }
 
     .section-title::after {
     content: '';
     display: block;
-    width: 60px;
+    width: 70px;
     height: 3px;
     background: var(--accent-gold);
-    margin: 10px auto;
+    margin: 12px auto;
+    border-radius: 3px;
     }
 
-    /* Love Story Timeline */
+    /* === Timeline === */
     .timeline {
     position: relative;
-    padding-left: 30px;
+    padding-left: 40px;
+    margin-top: 20px;
     }
 
     .timeline::before {
     content: '';
     position: absolute;
-    left: 8px;
+    left: 10px;
     top: 0;
     bottom: 0;
-    width: 2px;
-    background: var(--accent-gold);
+    width: 3px;
+    background: linear-gradient(to bottom, var(--accent-gold), var(--accent-blue));
+    border-radius: 3px;
     }
 
     .timeline-item {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     }
 
     .timeline-icon {
     position: absolute;
-    left: -30px;
+    left: -28px;
     top: 0;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     background: var(--accent-gold);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
     }
 
     .timeline-content {
     background: var(--card-bg);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s ease;
+    }
+
+    .timeline-content:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
     }
 
     .timeline-content h3 {
     color: var(--accent-blue);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
     }
 
     .timeline-photo-placeholder {
-    height: 120px;
+    height: 130px;
     background: var(--accent-soft-gold);
-    border-radius: 8px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 12px;
+    margin-top: 16px;
     color: var(--text-primary);
     font-style: italic;
+    font-weight: 500;
     }
 
-    /* Detail Acara */
+    /* === Event Details === */
     .event-card {
     background: var(--card-bg);
-    padding: 25px;
-    border-radius: 12px;
-    margin-bottom: 25px;
-    box-shadow: var(--shadow);
+    padding: 28px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-light);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .event-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
     }
 
     .event-card h3 {
     color: var(--accent-gold);
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    font-size: 1.4rem;
     }
 
     .btn-map {
     display: inline-block;
     background: var(--accent-blue);
     color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 10px 20px;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: 500;
-    margin-top: 10px;
+    font-weight: 600;
+    margin-top: 12px;
+    transition: all 0.3s ease;
     }
 
     .btn-map:hover {
-    opacity: 0.9;
+    background: #1e4a6e;
+    transform: scale(1.05);
     }
 
     .dresscode {
     text-align: center;
-    margin-top: 20px;
-    font-size: 1.2rem;
+    margin-top: 24px;
+    font-size: 1.3rem;
     color: var(--accent-gold);
+    font-weight: 600;
     }
 
-    /* Galeri Foto */
+    /* === Gallery === */
     .gallery-container {
-    max-width: 700px;
+    max-width: 720px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;
-    border-radius: 12px;
-    box-shadow: var(--shadow);
+    border-radius: 16px;
+    box-shadow: var(--shadow-light);
+    height: 420px;
     }
 
     .gallery-slides {
     position: relative;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     }
 
     .slide {
@@ -265,14 +358,16 @@
     width: 100%;
     height: 100%;
     opacity: 0;
-    transition: opacity 0.8s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    transform: scale(1.08);
     }
 
     .slide.active {
     opacity: 1;
+    transform: scale(1);
     z-index: 10;
     }
 
@@ -283,43 +378,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: var(--text-primary);
+    font-weight: 500;
     }
 
     .gallery-dots {
     display: flex;
     justify-content: center;
-    padding: 15px;
-    gap: 10px;
+    padding: 20px;
+    gap: 12px;
     }
 
     .dot {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    background: #ccc;
+    background: rgba(212, 175, 55, 0.4);
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .dot.active {
     background: var(--accent-gold);
+    transform: scale(1.2);
     }
 
-        /* Responsive */
+    /* === Responsive === */
     @media (max-width: 768px) {
-    .bride-groom { font-size: 2rem; }
-    .wedding-date { font-size: 1.2rem; }
-    .countdown > div { min-width: 60px; padding: 10px 5px; }
-    .countdown span { font-size: 1.3rem; }
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-    .section-title { font-size: 1.8rem; }
-    .timeline { padding-left: 20px; }
-    .timeline::before { left: 4px; }
-    .timeline-icon { left: -24px; width: 24px; height: 24px; }
-    .gallery-slides { height: 300px; }
+    .bride-groom { font-size: 2.2rem; }
+    .wedding-date { font-size: 1.3rem; }
+    .countdown > div { min-width: 60px; padding: 12px 6px; }
+    .countdown span { font-size: 1.4rem; }
+    .section { padding: 50px 15px; }
+    .section-title { font-size: 2rem; }
+    .timeline { padding-left: 30px; }
+    .timeline::before { left: 6px; }
+    .timeline-icon { left: -24px; width: 30px; height: 30px; }
+    .gallery-container { height: 320px; }
     }
