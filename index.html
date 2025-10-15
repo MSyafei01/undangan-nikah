@@ -131,6 +131,38 @@
             </div>
         </div>
         </section>
+
+    <!-- RSVP -->
+    <section id="rsvp" class="section" data-aos="fade-up" data-aos-delay="400">
+    <div class="container">
+        <h2 class="section-title">Konfirmasi Kehadiran</h2>
+        <div class="rsvp-card" data-aos="zoom-in">
+        <p>Kehadiran Anda adalah doa dan kebahagiaan bagi kami.</p>
+        <form id="rsvpForm">
+            <div class="form-group">
+            <input type="text" id="name" name="name" placeholder="Nama Anda" required>
+            </div>
+            <div class="form-group">
+            <select id="attendance" name="attendance" required>
+                <option value="">Akan Hadir?</option>
+                <option value="hadir">Hadir</option>
+                <option value="tidak">Tidak Hadir</option>
+            </select>
+            </div>
+            <div class="form-group">
+            <input type="number" id="guests" name="guests" placeholder="Jumlah Tamu" min="1" max="10">
+            </div>
+            <div class="form-group">
+            <textarea id="message" name="message" placeholder="Doa & Ucapan (Opsional)"></textarea>
+            </div>
+            <button type="submit" class="btn">Kirim Konfirmasi</button>
+        </form>
+        <p id="rsvpStatus" class="rsvp-status"></p>
+        </div>
+    </div>
+    
+    </section>        
+
     </main>
 
     <script src="script.js"></script>
